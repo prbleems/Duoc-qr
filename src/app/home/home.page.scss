@@ -1,0 +1,59 @@
+/* Fondo degradado de pantalla completa */
+#fondo-home {
+  background: linear-gradient(145deg, #8e9eff, #c9e4ff);
+  height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor del formulario con estilo de tarjeta */
+#tarjeta-home {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del título principal */
+ion-title {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #5b6ac9;
+  margin-bottom: 15px;
+}
+
+/* Estilo del subtítulo */
+.sub-title {
+  font-size: 1.2em;
+  color: #5b6ac9; /* Color para el subtítulo */
+  margin-bottom: 20px;
+}
+
+/* Estilo de los botones */
+ion-button {
+  --background: #007BFF; /* Color de fondo del botón */
+  --color: white; /* Color del texto */
+  border-radius: 40px; /* Bordes redondeados */
+  width: 90%;
+  max-width: 300px;
+  margin: 10px auto; /* Centrado */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+ion-button:hover {
+  --background: #0056b3; /* Color al pasar el ratón */
+  transform: translateY(-2px);
+}
+
+ion-button:active {
+  transform: translateY(1px); /* Efecto al hacer clic */
+}
+
+/* Espaciado para los párrafos */
+p {
+  margin: 10px 0; /* Espacio arriba y abajo */
+}

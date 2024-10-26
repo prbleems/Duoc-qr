@@ -1,0 +1,28 @@
+<ion-content class="ion-no-border" [fullscreen]="true">
+  <div id="fondo-home">
+    <div id="tarjeta-home">
+      <ion-header collapse="condense">
+      </ion-header>
+
+      <div id="container">
+        <ion-title class="sub-title">
+          ¡Bienvenido!
+        </ion-title>
+
+        <p></p>
+        <ion-button href="/login" class="boton">Volver</ion-button>
+        <ion-button href="/qr" id="present-alert-qr">Generar Qr</ion-button>
+        
+        <p></p>
+
+        <ion-button id="present-alert-code">Ver código Qr</ion-button>
+        <ion-alert
+          trigger="present-alert-code"
+          header="No funciona"
+          message="Este botón aún no funciona"
+          [buttons]="alertButtons"
+        ></ion-alert>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-content>
+  <!-- Fondo degradado -->
+  <div id="fondo-restablecer">
+    <div id="tarjeta-restablecer" class="center-content">
+      <!-- Usar un elemento h2 para el título -->
+      <h2 class="titulo-principal">Restablecer Contraseña</h2>
+
+      <!-- Formulario -->
+      <form [formGroup]="formularioRestablecer" class="formulario-restablecer">
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="person-outline"></ion-icon> Usuario
+          </ion-label>
+          <ion-input formControlName="usuario" maxlength="10" minlength="10"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="lock-closed-outline"></ion-icon> Nueva Contraseña
+          </ion-label>
+          <ion-input formControlName="nuevaContrasena" type="password"></ion-input>
+        </ion-item>
+
+        <p></p>
+        <p></p>
+        <ion-button class="boton">Enviar Restablecimiento</ion-button>
+      </form>
+    </div>
+  </div>
+</ion-content>

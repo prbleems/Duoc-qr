@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="fondo-qr">
+    <div id="tarjeta-qr">
+      <div class="qr-placeholder">
+        <!-- Aquí podrías poner un gráfico de QR o un ícono -->
+        <ion-header collapse="condense">
+          <ion-toolbar>
+            <ion-title size="large">Generador de QR para asistencia</ion-title>
+          </ion-toolbar>
+        </ion-header>
+
+        <p>Generar QR aquí</p>
+      </div>
+
+      <ion-button class="boton" id="present-alert-qr">Generar QR</ion-button>
+      <ion-alert
+        trigger="present-alert-qr"
+        header="No funciona"
+        message="Este botón aún no funciona"
+        [buttons]="alertButtons"
+      ></ion-alert>
+    </div>
+  </div>
+</ion-content>

@@ -21,11 +21,13 @@ const routes: Routes = [
   },
   {
     path: 'restablecer',
-    loadChildren: () => import('./restablecer/restablecer.module').then( m => m.RestablecerPageModule)
+    loadChildren: () => import('./restablecer/restablecer.module').then( m => m.RestablecerPageModule),
+    canActivate: [ingresadoGuard]
   },
   {
     path: 'qr',
-    loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule)
+    loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule),
+    canActivate: [ingresadoGuard]
   },
   {
     path: 'registro',

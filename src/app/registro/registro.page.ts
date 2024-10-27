@@ -13,21 +13,21 @@ import { AlertController, NavController } from '@ionic/angular';
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
-
   formularioregistro: FormGroup;
 
-  constructor(public fb: FormBuilder,
+  constructor(
+    public fb: FormBuilder,
     public alertController: AlertController,
-    public navCtrl: NavController) {
+    public navCtrl: NavController
+  ) {
     this.formularioregistro = this.fb.group({
-      'nombre': new FormControl("", Validators.required),
-      'password': new FormControl("", Validators.required),
-      'confirmacionpassword': new FormControl("", Validators.required)
+      nombre: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      confirmacionpassword: new FormControl('', Validators.required)
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async guardar() {
     var f = this.formularioregistro.value;
@@ -38,24 +38,25 @@ export class RegistroPage implements OnInit {
         message: 'Tienes que llenar los datos',
         buttons: ['Aceptar']
       });
-
       await alert.present();
       return;
     }
 
-    var usuario = {
+    const codigoRecuperacion = Math.random().toString(36).substring(2, 8).toUpperCase();
+
+    const usuario = {
       nombre: f.nombre,
-      password: f.password
+      password: f.password,
+      codigoRecuperacion
     };
 
     localStorage.setItem('usuario', JSON.stringify(usuario));
     localStorage.setItem('ingresado', 'true');
-        this.navCtrl.navigateRoot(['/home']);
+    this.navCtrl.navigateRoot(['/home']);
 
-    // Mostrar notificación de cuenta creada
     const alert = await this.alertController.create({
       header: '¡Cuenta creada!',
-      message: 'Tu cuenta ha sido creada exitosamente.',
+      message: `Tu cuenta ha sido creada exitosamente. Tu código de recuperación es: ${codigoRecuperacion}`,
       buttons: ['Aceptar']
     });
 

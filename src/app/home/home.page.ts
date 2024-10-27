@@ -9,6 +9,7 @@ import { NavController } from '@ionic/angular';
 export class HomePage implements OnInit {
   alertButtons = ['Action'];
   nombreUsuario: string = '';
+  codigoRecuperacion: string = '';
 
   constructor(private navCtrl: NavController) {}
 
@@ -17,6 +18,7 @@ export class HomePage implements OnInit {
     if (usuarioData) {
       const usuario = JSON.parse(usuarioData);
       this.nombreUsuario = usuario.nombre;
+      this.codigoRecuperacion = usuario.codigoRecuperacion;
     }
   }
 

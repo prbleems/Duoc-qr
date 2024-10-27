@@ -11,22 +11,27 @@ export class RestablecerPage implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.formularioRestablecer = this.formBuilder.group({
-      correo: ['', [Validators.required, Validators.email]],
+      usuario: ['', Validators.required],
       nuevaContrasena: ['', [Validators.required, Validators.minLength(6)]],
+      codigoRecuperacion: ['', Validators.required]
     });
   }
 
-  ngOnInit() {
-    // Cualquier inicialización adicional
-  }
+  ngOnInit() {}
 
-  // Método para manejar el envío del formulario
   onSubmit() {
     if (this.formularioRestablecer.valid) {
-      // Lógica para restablecer la contraseña
-      console.log(this.formularioRestablecer.value);
+      const usuarioData = JSON.parse(localStorage.getItem('usuario') || '{}');
+      const { usuario, codigoRecuperacion, nuevaContrasena } = this.formularioRestablecer.value;
+
+      if (usuario === usuarioData.nombre && codigoRecuperacion === usuarioData.codigoRecuperacion) {
+        usuarioData.password = nuevaContrasena;
+        localStorage.setItem('usuario', JSON.stringify(usuarioData));
+        console.log('Contraseña actualizada correctamente');
+      } else {
+        console.log('Código de recuperación o usuario incorrecto');
+      }
     } else {
-      // Manejo de errores
       console.log('Formulario no válido');
     }
   }

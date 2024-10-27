@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-restablecer',
@@ -9,17 +10,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RestablecerPage implements OnInit {
   formularioRestablecer: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private alertController: AlertController) {
     this.formularioRestablecer = this.formBuilder.group({
       usuario: ['', Validators.required],
-      nuevaContrasena: ['', [Validators.required, Validators.minLength(6)]],
+      nuevaContrasena: ['', Validators.required],
       codigoRecuperacion: ['', Validators.required]
     });
   }
 
   ngOnInit() {}
 
-  onSubmit() {
+  async onSubmit() {
     if (this.formularioRestablecer.valid) {
       const usuarioData = JSON.parse(localStorage.getItem('usuario') || '{}');
       const { usuario, codigoRecuperacion, nuevaContrasena } = this.formularioRestablecer.value;
@@ -27,12 +28,28 @@ export class RestablecerPage implements OnInit {
       if (usuario === usuarioData.nombre && codigoRecuperacion === usuarioData.codigoRecuperacion) {
         usuarioData.password = nuevaContrasena;
         localStorage.setItem('usuario', JSON.stringify(usuarioData));
-        console.log('Contraseña actualizada correctamente');
+
+        const alert = await this.alertController.create({
+          header: 'Éxito',
+          message: 'La contraseña ha sido actualizada correctamente.',
+          buttons: ['Aceptar']
+        });
+        await alert.present();
       } else {
-        console.log('Código de recuperación o usuario incorrecto');
+        const alert = await this.alertController.create({
+          header: 'Error',
+          message: 'Código de recuperación o usuario incorrecto.',
+          buttons: ['Aceptar']
+        });
+        await alert.present();
       }
     } else {
-      console.log('Formulario no válido');
+      const alert = await this.alertController.create({
+        header: 'Formulario no válido',
+        message: 'Por favor, complete todos los campos correctamente.',
+        buttons: ['Aceptar']
+      });
+      await alert.present();
     }
   }
 }

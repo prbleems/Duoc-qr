@@ -1,16 +1,15 @@
 <ion-content class="ion-no-border" [fullscreen]="true">
   <div id="fondo-home">
     <div id="tarjeta-home">
-      <ion-header collapse="condense">
-      </ion-header>
+      <ion-header collapse="condense"></ion-header>
 
       <div id="container">
         <ion-title class="sub-title">
-          ¡Bienvenido!
+          ¡Bienvenido, {{ nombreUsuario }}!
         </ion-title>
 
         <p></p>
-        <ion-button (click)=volverallogin() class="boton">Volver</ion-button>
+        <ion-button (click)="volverallogin()" class="boton">Volver</ion-button>
         <ion-button href="/qr" id="present-alert-qr">Generar Qr</ion-button>
         
         <p></p>
@@ -24,5 +23,5 @@
         ></ion-alert>
       </div>
     </div>
-  </div>
+  </div>  
 </ion-content>

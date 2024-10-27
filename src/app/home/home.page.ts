@@ -1,22 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
-
+export class HomePage implements OnInit {
   alertButtons = ['Action'];
+  nombreUsuario: string = '';
 
   constructor(private navCtrl: NavController) {}
 
-volverallogin() {
-  // Cierra la sesión eliminando el valor ingresado
-  localStorage.removeItem('ingresado');
-  // Redirige al login
-  this.navCtrl.navigateRoot('/login');
- }
+  ngOnInit() {
+    const usuarioData = localStorage.getItem('usuario');
+    if (usuarioData) {
+      const usuario = JSON.parse(usuarioData);
+      this.nombreUsuario = usuario.nombre;
+    }
+  }
+
+  volverallogin() {
+    localStorage.removeItem('ingresado');
+    this.navCtrl.navigateRoot('/login');
+  }
 }

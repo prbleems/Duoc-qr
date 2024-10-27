@@ -1,13 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title></ion-title>
+    <ion-title>Error 404</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-img src="assets/icon/e404.svg"></ion-img>
-
-  <a href="/login" >Volver</a>
-  
-   
+<ion-content class="ion-padding" fullscreen>
+  <div class="error-container">
+    <ion-img src="assets/icon/e404.svg" class="error-image"></ion-img>
+    <h1 class="error-title">¡Ups! Página no encontrada</h1>
+    <p class="error-message">
+      Parece que la página que buscas no existe o fue movida.
+    </p>
+    <ion-button href="/login" expand="block" color="primary" class="return-button">
+      Volver al inicio
+    </ion-button>
+  </div>
 </ion-content>

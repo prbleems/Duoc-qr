@@ -34,15 +34,25 @@ const routes: Routes = [
     loadChildren: () => import('./registro/registro.module').then(m => m.RegistroPageModule),
     canActivate: [noIngresadoGuard]
   },
+  
+
+  {
+    path: 'lista',
+    loadChildren: () => import('./lista/lista.module').then( m => m.ListaPageModule),
+    canActivate: [noIngresadoGuard]
+  },
   {
     path: 'pe404',
     loadChildren: () => import('./pe404/pe404.module').then(m => m.Pe404PageModule)
   },
+
   {
     path: '**',
     redirectTo: 'pe404',
     pathMatch: 'full'
-  }
+  },
+  
+
 ];
 
 @NgModule({
